@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+
+body{
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+background:linear-gradient(135deg,#ff6a88,#ff99ac);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+.container{
+padding:20px;
+max-width:400px;
+margin:auto;
+}
+
+h1{
+font-size:28px;
+margin-top:10px;
+}
+
+/* relationship counter */
+
+.counter{
+background:rgba(255,255,255,0.2);
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+}
+
+/* chat UI */
+
+.chat{
+margin-top:20px;
+text-align:left;
+}
+
+.message{
+background:white;
+color:black;
+padding:10px 15px;
+border-radius:15px;
+margin:10px 0;
+width:fit-content;
+max-width:80%;
+}
+
+.me{
+margin-left:auto;
+background:#ff4d6d;
+color:white;
+}
+
+/* heart rain */
+
+.heart{
+position:fixed;
+top:-10px;
+color:white;
+font-size:20px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh);
+}
+}
+
+/* button */
+
+button{
+margin-top:20px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Good Morning My Love ❤️</h1>
+
+<div class="counter">
+<p>We've been together for</p>
+<h2 id="days"></h2>
+</div>
+
+<div class="chat" id="chat"></div>
+
+<button onclick="showLove()">Send Love 💌</button>
+
+<p id="secret"></p>
+
+</div>
+
+<script>
+
+/* relationship days */
+
+let startDate=new Date("2024-11-01")   // change to your date
+let today=new Date()
+
+let diff=today-startDate
+
+let days=Math.floor(diff/(1000*60*60*24))
+
+document.getElementById("days").innerText=days+" days ❤️"
+
+
+/* chat messages */
+
+let messages=[
+{from:"her",text:"Good morning ❤️"},
+{from:"me",text:"Good morning beautiful ☀️"},
+{from:"her",text:"Did you sleep well?"},
+{from:"me",text:"Yes, because I dreamed about you 💖"},
+]
+
+let chat=document.getElementById("chat")
+
+messages.forEach(m=>{
+
+let div=document.createElement("div")
+
+div.className="message "+(m.from==="me"?"me":"")
+
+div.innerText=m.text
+
+chat.appendChild(div)
+
+})
+
+
+/* send love */
+
+function showLove(){
+
+let div=document.createElement("div")
+
+div.className="message me"
+
+div.innerText="I Love You Forever ❤️"
+
+chat.appendChild(div)
+
+}
+
+
+/* heart rain */
+
+function createHeart(){
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.animationDuration=(Math.random()*3+3)+"s"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),6000)
+
+}
+
+setInterval(createHeart,300)
+
+
+/* service worker */
+
+if('serviceWorker' in navigator){
+navigator.serviceWorker.register("sw.js")
+}
+
+</script>
+
+</body>
+</html>

@@ -831,7 +831,7 @@ chatMessages.forEach((m, i) => {
     const wrap = document.createElement("div");
     wrap.className = "chat-bubble " + (m.from === "me" ? "me" : "");
     wrap.innerHTML = `
-      <div class="avatar">${m.from === "me" ? "💙" : "🌸"}</div>
+      <div class="avatar"><img src="${m.from === "me" ? "images/my-photo.jpeg" : "images/her-photo.jpeg"}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
       <div>
         <div class="bubble-text">${m.text}</div>
         <div class="bubble-time">${m.time}</div>
